@@ -1,0 +1,9 @@
+# Virtual Environment
+venv_healthiq/
+# Python
+__pycache__/
+*.pyc
+# Models and Data (Models can be large, often stored separately)
+backend/models/
+# Environment Variables
+.env
