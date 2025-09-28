@@ -1,5 +1,6 @@
 import streamlit as st
 import base64
+import os
 
 st.set_page_config(page_title="MoodCare AI", layout="wide")
 
@@ -10,12 +11,12 @@ def get_base64(file):
     return base64.b64encode(data).decode()
 
 # Background and logo
-img_path = "WhatsApp Image 2025-09-25 at 21.33.53.jpeg"
+BASE_DIR = os.path.dirname(__file__)
+img_path = os.path.join(BASE_DIR, "background.jpeg")
+logo_path = os.path.join(BASE_DIR, "logo.png")
+
 img_base64 = get_base64(img_path)
-
-logo_path = "WhatsApp Image 2025-09-27 at 17.41.02.png"
 logo_base64 = get_base64(logo_path)
-
 # --- Custom CSS ---
 st.markdown(f"""
 <style>
@@ -77,12 +78,12 @@ st.markdown(f"""
 }}
 .signup-btn {{
     background: linear-gradient(90deg, #04AA6D, #2e77d0);
-    color: white !important;  /* White text for Sign Up */
+    color: white !important;  
     border: none;
 }}
 .signup-btn:hover {{
     opacity: 0.9;
-    color: white !important; /* keep text white on hover */
+    color: white !important; 
 }}
 /* Hero Section */
 .hero {{
