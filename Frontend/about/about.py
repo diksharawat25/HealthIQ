@@ -1,5 +1,6 @@
 import streamlit as st
 import base64
+import os
 
 st.set_page_config(page_title="About the System", layout="wide")
 
@@ -9,8 +10,11 @@ def get_base64(bin_file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-# Background image path
-bg_path = r"C:\Users\User\Downloads\Streamlit\about bg.jpeg"
+# Base directory of this script
+BASE_DIR = os.path.dirname(__file__)
+
+# Background image path (inside Frontend/about/)
+bg_path = os.path.join(BASE_DIR, "aboutbg.jpeg")
 bg_img = get_base64(bg_path)
 
 # Inject CSS for background and gradient heading
@@ -60,7 +64,7 @@ with col1:
 
 with col2:
     # Right-aligned PNG image without box or shadow
-    image_path = r"C:\Users\User\Downloads\Streamlit\imageOfabout.png"
+    image_path = os.path.join(BASE_DIR, "imageOfabout.png")
     img_base64 = get_base64(image_path)
 
     st.markdown(f"""
@@ -68,3 +72,4 @@ with col2:
         <img src="data:image/png;base64,{img_base64}" width="500"/>
     </div>
     """, unsafe_allow_html=True)
+
